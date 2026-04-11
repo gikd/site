@@ -61,15 +61,27 @@ const themes = [
 
 export default function Page() {
   const cursorGlowRef = useRef<HTMLDivElement | null>(null);
+  const spotlightRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const cards = Array.from(document.querySelectorAll<HTMLElement>(".tilt-card"));
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    const magneticItems = Array.from(
+      document.querySelectorAll<HTMLElement>(".magnetic")
+    );
 
     const handlePointerMove = (event: PointerEvent) => {
       if (!cursorGlowRef.current) return;
       cursorGlowRef.current.style.left = `${event.clientX}px`;
       cursorGlowRef.current.style.top = `${event.clientY}px`;
+
+      if (spotlightRef.current) {
+        spotlightRef.current.style.left = `${event.clientX}px`;
+        spotlightRef.current.style.top = `${event.clientY}px`;
+      }
+
+      document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
     };
 
     const cleanupTilt = cards.map((card) => {
@@ -96,6 +108,28 @@ export default function Page() {
       };
     });
 
+    const cleanupMagnetic = magneticItems.map((item) => {
+      const onMove = (event: PointerEvent) => {
+        const rect = item.getBoundingClientRect();
+        const offsetX = event.clientX - rect.left - rect.width / 2;
+        const offsetY = event.clientY - rect.top - rect.height / 2;
+
+        item.style.transform = `translate(${offsetX * 0.12}px, ${offsetY * 0.12}px)`;
+      };
+
+      const onLeave = () => {
+        item.style.transform = "translate(0px, 0px)";
+      };
+
+      item.addEventListener("pointermove", onMove);
+      item.addEventListener("pointerleave", onLeave);
+
+      return () => {
+        item.removeEventListener("pointermove", onMove);
+        item.removeEventListener("pointerleave", onLeave);
+      };
+    });
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -114,6 +148,7 @@ export default function Page() {
       window.removeEventListener("pointermove", handlePointerMove);
       observer.disconnect();
       cleanupTilt.forEach((cleanup) => cleanup());
+      cleanupMagnetic.forEach((cleanup) => cleanup());
     };
   }, []);
 
@@ -123,6 +158,7 @@ export default function Page() {
         <div className="ambient__glow ambient__glow--one" />
         <div className="ambient__glow ambient__glow--two" />
         <div className="ambient__cursor" ref={cursorGlowRef} />
+        <div className="ambient__spotlight" ref={spotlightRef} />
       </div>
 
       <header className="site-header">
@@ -153,6 +189,24 @@ export default function Page() {
                 <br />
                 그 안의 맥락을 본다.
               </h1>
+              <div className="logo-stage reveal">
+                <div className="logo-mark tilt-card" aria-hidden="true">
+                  <div className="logo-mark__ring logo-mark__ring--outer" />
+                  <div className="logo-mark__ring logo-mark__ring--middle" />
+                  <div className="logo-mark__ring logo-mark__ring--inner" />
+                  <div className="logo-mark__beam logo-mark__beam--x" />
+                  <div className="logo-mark__beam logo-mark__beam--y" />
+                  <div className="logo-mark__core" />
+                  <div className="logo-mark__orbit" />
+                </div>
+                <div className="logo-stage__copy">
+                  <p className="panel-label">LOGO MOTION</p>
+                  <p>
+                    채널명에서 느껴지는 관점, 초점, 해석의 이미지를 추상적인
+                    시선 장치처럼 움직이게 만들었습니다.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="hero__side reveal">
@@ -173,13 +227,33 @@ export default function Page() {
               조명 효과로 채널의 인상을 더 선명하게 다듬은 버전입니다.
             </p>
             <div className="hero__actions">
-              <a className="button button--primary" href="https://www.youtube.com/@묘수의관점" target="_blank" rel="noreferrer">
+              <a
+                className="button button--primary magnetic"
+                href="https://www.youtube.com/@묘수의관점"
+                target="_blank"
+                rel="noreferrer"
+              >
                 채널 바로가기
               </a>
-              <a className="button button--secondary" href="#about">
+              <a className="button button--secondary magnetic" href="#about">
                 소개 읽기
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="ticker reveal" aria-label="channel keywords">
+          <div className="ticker__track">
+            <span>묘수의관점</span>
+            <span>AI</span>
+            <span>PLATFORM SHIFT</span>
+            <span>MARKET SENSE</span>
+            <span>VIEWPOINT</span>
+            <span>묘수의관점</span>
+            <span>AI</span>
+            <span>PLATFORM SHIFT</span>
+            <span>MARKET SENSE</span>
+            <span>VIEWPOINT</span>
           </div>
         </section>
 
