@@ -5,10 +5,10 @@ import { useEffect, useRef } from "react";
 const channels = [
   {
     index: "01",
-    title: "YouTube",
-    description: "대표 채널 링크와 최근 콘텐츠를 가장 강조해서 연결.",
-    href: "https://youtube.com",
-    cta: "채널 열기",
+    title: "묘수의관점",
+    description: "메인 YouTube 채널. 관점이 살아 있는 이야기와 콘텐츠를 전면에.",
+    href: "https://www.youtube.com/@%EB%AC%98%EC%88%98%EC%9D%98%EA%B4%80%EC%A0%90",
+    cta: "YouTube 열기",
   },
   {
     index: "02",
@@ -117,13 +117,12 @@ export default function Page() {
             <div className="hero__copy">
               <p className="hero__intro">Creator, storyteller, builder</p>
               <h1>
-                나는 콘텐츠와 아이디어를 <span>매력적인 흐름</span>으로 연결하는
-                사람.
+                <span>묘수의관점</span>으로 콘텐츠와 아이디어를 연결하는 사람.
               </h1>
               <p className="hero__body">
-                YouTube 채널, 개인 브랜딩, 진행 중인 프로젝트까지 한 화면 안에서
-                감각적으로 보여주는 소개 페이지예요. 첫인상은 강하게, 정보는
-                선명하게, 분위기는 세련되게.
+                메인 채널인 묘수의관점을 중심으로, 내가 어떤 시선으로 이야기하고
+                어떤 흐름으로 콘텐츠를 만드는지 한 화면 안에 담아낸 소개
+                페이지예요. 첫인상은 강하게, 정보는 선명하게, 분위기는 세련되게.
               </p>
               <div className="hero__actions">
                 <a className="button button--primary" href="#channels">
@@ -141,11 +140,11 @@ export default function Page() {
               <ul className="stat-list">
                 <li>
                   <span>Primary</span>
-                  <strong>YouTube 콘텐츠</strong>
+                  <strong>@묘수의관점</strong>
                 </li>
                 <li>
                   <span>Focus</span>
-                  <strong>개인 브랜드 확장</strong>
+                  <strong>관점 있는 콘텐츠 브랜딩</strong>
                 </li>
                 <li>
                   <span>Style</span>
@@ -164,16 +163,16 @@ export default function Page() {
           <div className="about-grid">
             <article className="panel panel--large reveal">
               <p>
-                나는 단순히 정보를 전달하는 사람이 아니라, 사람들의 시선을
-                머물게 하고 기억에 남게 만드는 흐름을 설계합니다. 콘텐츠를 만들
-                때도, 채널을 운영할 때도, 결국 중요한 건 분위기와 메시지가 함께
-                살아 있는지예요.
+                나는 단순히 정보를 전달하는 사람이 아니라, 하나의 관점을
+                콘텐츠로 풀어내고 사람들의 시선을 머물게 만드는 흐름을 설계합니다.
+                묘수의관점을 통해 메시지와 분위기가 함께 살아 있는 콘텐츠를
+                만들고 있어요.
               </p>
             </article>
             <article className="panel reveal">
               <p className="panel-label">VOICE</p>
               <h3>깔끔하지만 차갑지 않게</h3>
-              <p>세련된 비주얼 위에 사람 냄새 나는 문장과 리듬을 얹습니다.</p>
+              <p>선명한 관점 위에 사람 냄새 나는 문장과 리듬을 얹습니다.</p>
             </article>
             <article className="panel reveal">
               <p className="panel-label">APPROACH</p>
@@ -216,9 +215,10 @@ export default function Page() {
               <p className="panel-label">NOW BUILDING</p>
               <h3>콘텐츠, 채널, 그리고 나 자체의 브랜드</h3>
               <p>
-                이 페이지는 단순 링크 모음이 아니라, 내가 어떤 감각으로 움직이는지
-                보여주는 디지털 명함이에요. 그래서 구조보다 무드, 정보보다 인상이
-                먼저 오도록 만들었습니다.
+                이 페이지는 단순 링크 모음이 아니라, 묘수의관점이라는 채널을
+                중심으로 내가 어떤 감각과 시선으로 움직이는지 보여주는 디지털
+                명함이에요. 그래서 구조보다 무드, 정보보다 인상이 먼저 오도록
+                만들었습니다.
               </p>
             </article>
             <div className="focus-list">
