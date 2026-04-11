@@ -7,7 +7,7 @@ const channels = [
     index: "01",
     title: "묘수의관점",
     description: "메인 YouTube 채널. 관점이 살아 있는 이야기와 콘텐츠를 전면에.",
-    href: "https://www.youtube.com/@%EB%AC%98%EC%88%98%EC%9D%98%EA%B4%80%EC%A0%90",
+    href: "https://www.youtube.com/@묘수의관점",
     cta: "YouTube 열기",
   },
   {
