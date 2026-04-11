@@ -2,34 +2,61 @@
 
 import { useEffect, useRef } from "react";
 
-const channels = [
+const signals = [
   {
-    index: "01",
-    title: "묘수의관점",
-    description: "메인 YouTube 채널. 관점이 살아 있는 이야기와 콘텐츠를 전면에.",
-    href: "https://www.youtube.com/@묘수의관점",
-    cta: "YouTube 열기",
+    label: "Viewpoint",
+    value: "관점이 분명한 해석",
   },
   {
-    index: "02",
-    title: "Instagram",
-    description: "비주얼 톤과 일상적인 브랜딩 무드를 자연스럽게 확장.",
-    href: "https://instagram.com",
-    cta: "프로필 보기",
+    label: "Topics",
+    value: "AI, 플랫폼 변화, 시장 감각",
   },
   {
-    index: "03",
-    title: "Archive",
-    description: "프로젝트, 링크, 정리 글을 별도 페이지와 유연하게 연결.",
-    href: "https://notion.so",
-    cta: "아카이브 보기",
+    label: "Tone",
+    value: "선명하지만 과장되지 않게",
   },
 ];
 
-const focusItems = [
-  "대표 영상이나 플레이리스트를 상단에 고정",
-  "채널별 성격을 짧고 강하게 분리해서 소개",
-  "마우스 움직임에 반응하는 비주얼로 첫인상 강화",
+const channelCards = [
+  {
+    index: "01",
+    title: "YouTube",
+    heading: "묘수의관점",
+    description:
+      "채널의 중심. 흐름을 읽고, 변화의 맥락을 해석하고, 복잡한 이슈를 관점 있는 이야기로 풀어냅니다.",
+    href: "https://www.youtube.com/@묘수의관점",
+    cta: "채널 보기",
+  },
+  {
+    index: "02",
+    title: "Keywords",
+    heading: "AI · Platform · Market",
+    description:
+      "공개 검색 신호를 기준으로 보면 AI, 유튜브 정책 변화, 시장/투자 맥락이 반복적으로 보입니다. 이 축을 중심으로 페이지 카피를 설계했습니다.",
+    href: "https://www.youtube.com/@묘수의관점",
+    cta: "콘텐츠 톤 보기",
+  },
+  {
+    index: "03",
+    title: "Brand",
+    heading: "Sharp, Quiet, Precise",
+    description:
+      "자극적인 과장 대신 선명한 해석으로 남는 채널. 그래서 사이트도 검정과 흰색 중심의 에디토리얼 톤으로 재구성했습니다.",
+    href: "https://github.com/gikd/site",
+    cta: "사이트 구조 보기",
+  },
+];
+
+const manifesto = [
+  "빠르게 변하는 흐름 속에서도 중요한 건 결국 무엇을 보느냐보다, 어떻게 읽느냐라는 점.",
+  "묘수의관점은 AI, 플랫폼, 시장, 그리고 콘텐츠 환경의 변화에서 의미 있는 결을 포착해내는 채널로 보였습니다.",
+  "그래서 이 페이지도 단순 소개가 아니라, 시선과 태도 자체를 보여주는 한 장의 에디토리얼로 설계했습니다.",
+];
+
+const themes = [
+  "AI가 바꾸는 창작과 플랫폼의 규칙",
+  "유튜브 생태계와 정책 변화의 파장",
+  "시장과 트렌드를 읽는 개인의 감각",
 ];
 
 export default function Page() {
@@ -50,8 +77,8 @@ export default function Page() {
         const rect = card.getBoundingClientRect();
         const offsetX = event.clientX - rect.left;
         const offsetY = event.clientY - rect.top;
-        const rotateY = ((offsetX / rect.width) - 0.5) * 10;
-        const rotateX = ((offsetY / rect.height) - 0.5) * -10;
+        const rotateY = ((offsetX / rect.width) - 0.5) * 7;
+        const rotateX = ((offsetY / rect.height) - 0.5) * -7;
 
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
       };
@@ -77,7 +104,7 @@ export default function Page() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     revealItems.forEach((item) => observer.observe(item));
@@ -100,131 +127,79 @@ export default function Page() {
 
       <header className="site-header">
         <a className="brand" href="#top">
-          MY BRAND
+          MYSU VIEW
         </a>
         <nav className="site-nav">
           <a href="#about">About</a>
-          <a href="#channels">Channels</a>
-          <a href="#focus">Focus</a>
+          <a href="#channel">Channel</a>
+          <a href="#themes">Themes</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
 
       <main id="top">
         <section className="hero">
-          <p className="eyebrow">PERSONAL INTRO SITE</p>
-          <div className="hero__content">
-            <div className="hero__copy">
-              <p className="hero__intro">Creator, storyteller, builder</p>
+          <div className="hero__meta">
+            <p className="eyebrow">EDITORIAL INTRO PAGE</p>
+            <p className="hero__stamp">01 / OBSERVE THE SHIFT</p>
+          </div>
+
+          <div className="hero__grid">
+            <div className="hero__main">
+              <p className="hero__intro">YouTube Channel / Personal Lens / Modern Editorial Site</p>
               <h1>
-                <span>묘수의관점</span>으로 콘텐츠와 아이디어를 연결하는 사람.
+                <span>묘수의관점</span>
+                변화의 표면보다
+                <br />
+                그 안의 맥락을 본다.
               </h1>
-              <p className="hero__body">
-                메인 채널인 묘수의관점을 중심으로, 내가 어떤 시선으로 이야기하고
-                어떤 흐름으로 콘텐츠를 만드는지 한 화면 안에 담아낸 소개
-                페이지예요. 첫인상은 강하게, 정보는 선명하게, 분위기는 세련되게.
-              </p>
-              <div className="hero__actions">
-                <a className="button button--primary" href="#channels">
-                  채널 보기
-                </a>
-                <a className="button button--secondary" href="#about">
-                  소개 읽기
-                </a>
-              </div>
             </div>
 
-            <aside className="hero__card tilt-card">
-              <p className="card-label">CURRENT SNAPSHOT</p>
-              <h2>지금 만드는 것들</h2>
-              <ul className="stat-list">
-                <li>
-                  <span>Primary</span>
-                  <strong>@묘수의관점</strong>
-                </li>
-                <li>
-                  <span>Focus</span>
-                  <strong>관점 있는 콘텐츠 브랜딩</strong>
-                </li>
-                <li>
-                  <span>Style</span>
-                  <strong>트렌디, 선명, 인터랙티브</strong>
-                </li>
-              </ul>
-            </aside>
+            <div className="hero__side reveal">
+              <div className="hero-note tilt-card">
+                <p className="panel-label">INFERRED POSITIONING</p>
+                <p>
+                  공개 검색 결과를 기준으로 보면 이 채널은 AI, 유튜브 정책 변화,
+                  시장 감각을 해석하는 축이 강해 보여요. 그래서 소개 페이지도
+                  정보를 나열하기보다 시선과 태도를 먼저 보여주도록 설계했습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero__footer">
+            <p className="hero__body">
+              검정과 흰색 사이의 강한 대비, 얇은 라인, 큰 타이포, 마우스 반응형
+              조명 효과로 채널의 인상을 더 선명하게 다듬은 버전입니다.
+            </p>
+            <div className="hero__actions">
+              <a className="button button--primary" href="https://www.youtube.com/@묘수의관점" target="_blank" rel="noreferrer">
+                채널 바로가기
+              </a>
+              <a className="button button--secondary" href="#about">
+                소개 읽기
+              </a>
+            </div>
           </div>
         </section>
 
-        <section className="section" id="about">
+        <section className="section section--split" id="about">
           <div className="section-heading">
             <p className="eyebrow">ABOUT</p>
-            <h2>짧은 소개보다, 인상 깊은 소개.</h2>
+            <h2>채널을 소개하는 대신, 채널의 태도를 보여주기.</h2>
           </div>
-          <div className="about-grid">
-            <article className="panel panel--large reveal">
-              <p>
-                나는 단순히 정보를 전달하는 사람이 아니라, 하나의 관점을
-                콘텐츠로 풀어내고 사람들의 시선을 머물게 만드는 흐름을 설계합니다.
-                묘수의관점을 통해 메시지와 분위기가 함께 살아 있는 콘텐츠를
-                만들고 있어요.
+
+          <div className="editorial-layout">
+            <article className="quote-panel reveal">
+              <p className="quote-panel__text">
+                “복잡한 변화를 단순하게 만드는 힘은 정보량이 아니라 관점의
+                선명함에서 나온다.”
               </p>
             </article>
-            <article className="panel reveal">
-              <p className="panel-label">VOICE</p>
-              <h3>깔끔하지만 차갑지 않게</h3>
-              <p>선명한 관점 위에 사람 냄새 나는 문장과 리듬을 얹습니다.</p>
-            </article>
-            <article className="panel reveal">
-              <p className="panel-label">APPROACH</p>
-              <h3>트렌디하지만 복제 같지 않게</h3>
-              <p>보는 순간 이 사람 감각 있다는 인상이 남도록 설계합니다.</p>
-            </article>
-          </div>
-        </section>
 
-        <section className="section" id="channels">
-          <div className="section-heading">
-            <p className="eyebrow">CHANNELS</p>
-            <h2>내가 움직이고 있는 채널들.</h2>
-          </div>
-          <div className="channels-grid">
-            {channels.map((channel) => (
-              <a
-                key={channel.title}
-                className="channel-card tilt-card reveal"
-                href={channel.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span className="channel-card__index">{channel.index}</span>
-                <h3>{channel.title}</h3>
-                <p>{channel.description}</p>
-                <span className="channel-card__cta">{channel.cta}</span>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="section focus" id="focus">
-          <div className="section-heading">
-            <p className="eyebrow">FOCUS</p>
-            <h2>지금 가장 힘을 주고 있는 방향.</h2>
-          </div>
-          <div className="focus-layout">
-            <article className="focus-feature panel reveal">
-              <p className="panel-label">NOW BUILDING</p>
-              <h3>콘텐츠, 채널, 그리고 나 자체의 브랜드</h3>
-              <p>
-                이 페이지는 단순 링크 모음이 아니라, 묘수의관점이라는 채널을
-                중심으로 내가 어떤 감각과 시선으로 움직이는지 보여주는 디지털
-                명함이에요. 그래서 구조보다 무드, 정보보다 인상이 먼저 오도록
-                만들었습니다.
-              </p>
-            </article>
-            <div className="focus-list">
-              {focusItems.map((item, index) => (
-                <article className="mini-panel reveal" key={item}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+            <div className="manifesto">
+              {manifesto.map((item) => (
+                <article className="manifesto__item reveal" key={item}>
                   <p>{item}</p>
                 </article>
               ))}
@@ -232,16 +207,66 @@ export default function Page() {
           </div>
         </section>
 
+        <section className="section" id="channel">
+          <div className="section-heading">
+            <p className="eyebrow">CHANNEL</p>
+            <h2>지금 이 페이지가 담고 있는 채널의 결.</h2>
+          </div>
+
+          <div className="signal-board reveal">
+            {signals.map((signal) => (
+              <div className="signal-board__item" key={signal.label}>
+                <span>{signal.label}</span>
+                <strong>{signal.value}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="channels-grid">
+            {channelCards.map((card) => (
+              <a
+                key={card.heading}
+                className="channel-card tilt-card reveal"
+                href={card.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="channel-card__index">{card.index}</span>
+                <p className="channel-card__eyebrow">{card.title}</p>
+                <h3>{card.heading}</h3>
+                <p>{card.description}</p>
+                <span className="channel-card__cta">{card.cta}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <section className="section section--inverse" id="themes">
+          <div className="section-heading section-heading--inverse">
+            <p className="eyebrow">THEMES</p>
+            <h2>이 채널이 더 강하게 보이도록 잡은 핵심 키워드.</h2>
+          </div>
+
+          <div className="themes-grid">
+            {themes.map((theme, index) => (
+              <article className="theme-card reveal" key={theme}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h3>{theme}</h3>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="section contact" id="contact">
           <div className="contact-panel reveal">
             <p className="eyebrow">CONTACT</p>
-            <h2>재미있는 제안, 협업, 연결을 기다립니다.</h2>
+            <h2>콘텐츠 협업, 제안, 연결이 필요하다면.</h2>
             <p>
-              여기에는 이메일, 대표 링크, 문의 버튼, 혹은 간단한 캘린더 연결을
-              넣으면 돼요.
+              다음 단계에서는 여기에 실제 메일, SNS, 대표 영상, 채널 소개 한 줄을
+              넣으면 완성도가 더 올라갑니다.
             </p>
-            <a className="button button--primary" href="mailto:hello@example.com">
-              이메일 연결
+            <a className="button button--primary" href="https://www.youtube.com/@묘수의관점" target="_blank" rel="noreferrer">
+              유튜브로 이동
             </a>
           </div>
         </section>
