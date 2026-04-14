@@ -163,7 +163,7 @@ export default function Page() {
 
       <header className="site-header">
         <a className="brand" href="#top">
-          MYSU VIEW
+          MYOSU VIEW
         </a>
         <nav className="site-nav">
           <a href="#about">About</a>
@@ -176,18 +176,18 @@ export default function Page() {
       <main id="top">
         <section className="hero">
           <div className="hero__meta">
-            <p className="eyebrow">EDITORIAL INTRO PAGE</p>
+            <p className="eyebrow" />
             <p className="hero__stamp">01 / OBSERVE THE SHIFT</p>
           </div>
 
           <div className="hero__grid">
             <div className="hero__main">
-              <p className="hero__intro">YouTube Channel / Personal Lens / Modern Editorial Site</p>
+              <p className="hero__intro" />
               <h1>
                 <span>묘수의관점</span>
                 변화의 표면보다
                 <br />
-                그 안의 맥락을 본다.
+                그 안의 맥락을.
               </h1>
               <div className="logo-stage reveal">
                 <div className="logo-mark tilt-card" aria-hidden="true">
@@ -211,12 +211,8 @@ export default function Page() {
 
             <div className="hero__side reveal">
               <div className="hero-note tilt-card">
-                <p className="panel-label">INFERRED POSITIONING</p>
-                <p>
-                  공개 검색 결과를 기준으로 보면 이 채널은 AI, 유튜브 정책 변화,
-                  시장 감각을 해석하는 축이 강해 보여요. 그래서 소개 페이지도
-                  정보를 나열하기보다 시선과 태도를 먼저 보여주도록 설계했습니다.
-                </p>
+                <p className="panel-label" />
+                <p />
               </div>
             </div>
           </div>
